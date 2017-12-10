@@ -36,13 +36,16 @@ Man kan gå ind konfigurere rate limit således:
 
 limit_req_zone $binary_remote_addr zone=mylimit:10mrate=10r/s;
 
-server {
-    location /login/ {
-        limit_req zone=mylimit;
 
+    server {    
+
+    location /login/ {
+        
+        limit_req zone=mylimit;
+        
         proxy_pass http://my_upstream;
     }
-}
+    }
 
 Ved at ændre på de forskellige parameter kan man ændre antal requests man gerne vil indenfor et tidsinterval. 
 
