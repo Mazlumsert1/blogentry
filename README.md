@@ -45,3 +45,16 @@ server {
 }
 
 Ved at ændre på de forskellige parameter kan man ændre antal requests man gerne vil indenfor et tidsinterval. 
+
+
+Links :
+
+http://www.scaledagileframework.com/continuous-deployment/
+
+https://laracasts.com/discuss/channels/forge/what-does-forge-in-terms-of-security?page=1
+
+http://nginx.org/en/docs/http/ngx_http_upstream_module.html
+
+https://www.nginx.com/blog/rate-limiting-nginx/
+
+
