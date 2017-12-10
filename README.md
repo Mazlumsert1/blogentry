@@ -10,7 +10,7 @@ Da vi lever i en verden hvor tekniske revolutioner forekommer ofte og menneskets
 Et vigtigt element til at følge kundernes efterspørgsel, er ved at man kan skabe det såkaldte ”deployment chain”, dette vil fremhæve hastigheden for processen. Hermed vil dette medføre en automatisering af vores deployment proces. Med Laravel Forge(CD) og Travis(CI) kan vi skabe en ”deployment chain” og dermed få det op på produktion. 
 Nedstående illustreres ”deployment chain” processen. 
 
-
+![alt text](https://raw.githubusercontent.com/bigstepdenmark/HackerNews/master/systemmodels/CDflow.png)
 
 
 Trinene for vores deployment:
