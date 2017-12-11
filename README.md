@@ -1,67 +1,27 @@
-# blogentry
+# Sikker MySQL
+Som en af de mest brugte open-source Relational Database Management System er MySQL en god færdighed at have, samt giver fordelagtig karriere muligheder. På grund af det konsekvente niveau af hurtig performance og nemt at bruge er den i dag brugt mange steder, både af webudvikler, individuelle og store organisationer, såsom Youtube, Google og Yahoo. Som de fleste produkter så er sikkerhed ikke en vigtig overvejelse. Ofte vil man gerne have det hurtig op at køre, således at organisationen kan hurtig drage fordel af det. Det er derfor vigtigt at man sikre MySQL databasen, da det kan have voldsomme konsekvenser, såsom tabt data eller ransomware, som var på omløb i 2017.
 
+## Best Practices for increasing security
+I denne blog vil vi se på nogle af de mest populære sikkerhedsproblemer i MySQL, og hermed løsninger til en mere sikker MySQL, dog er der yderst vigtigt og antaget at man har sikret serveren inden man sikre MySQL databasen. 
 
-Continous Deployment & Integration Med Laravel
+Ofte kan man øge sikkerheden for en MySQL database med små konfigurationer, som kan gøre en stor forskel. 
 
+---
 
-Abstract:
-Da vi lever i en verden hvor tekniske revolutioner forekommer ofte og menneskets behov vokser eksponentielt, er det derfor relevant at vi som individer der arbejder indenfor IT branchen kan regere ligeså hurtigt, eftersom kundens efterspørgsel stiger.  
+#### Ændre default user
+Alene i 2016 var den mest brugte username “root” og password “123456”, så det er rimeligt at antage dette kan være en realitet. Ofte forsøger hackerne at få adgang til rettighederne til denne bruger, derfor er det vigtigt at denne bruger ændres. Det anbefales at adgangskoden ændres til en kompleks alfanumerisk adgangskode. Dette kan gøres hurtigt og nemt på to step.
 
-Et vigtigt element til at følge kundernes efterspørgsel, er ved at man kan skabe det såkaldte ”deployment chain”, dette vil fremhæve hastigheden for processen. Hermed vil dette medføre en automatisering af vores deployment proces. Med Laravel Forge(CD) og Travis(CI) kan vi skabe en ”deployment chain” og dermed få det op på produktion. 
-Nedstående illustreres ”deployment chain” processen. 
+```bash
+# Change username
+mysql> RENAME USER root TO secure_user;
 
-![alt text](https://raw.githubusercontent.com/bigstepdenmark/HackerNews/master/systemmodels/CDflow.png)
+# Change password
+mysql> SET PASSWORD FOR 'secure_user'@'hostname' = PASSWORD('01MoreSecurePass02');
+```
 
+---
 
-Trinene for vores deployment:
-
-1.	Push til master branch i github.
-2.	Travis CI udløser vores push og køre testene. 
-3.	Forge bliver udløst af Travis CI og deployer ændringerne til remote server. 
-
-
-The problem
-En ulempe ved at anvende Laravel Forge, er f.eks. at det koster penge så i længden kan det gå hen og blive dyrt. 
-Et andet problem kunne være at fordi der sker så meget i baggrunden kan det være svært at konfigurere.  
-
-Forge er ikke designet til at forsyne sikkerhed, så det er op til udviklerne at tilføje ekstra sikkerhed. 
-
-En af løsningerne kunne være at anvende NGINX webserver som har en feature kaldet rate limiting, som giver den mulighed for at begrænse mængden af HTTP-requests i et specifikt tidsinterval. 
-Hertil forstås der både GET og POST request.
-Hvis man observere i sine server logs, vil man finde frem til fejl koden 429(To many requests).  	
-
-Rate limiting bliver brugt af sikkerhedsformål, f.eks. for at beskytter os imod DDoS angreb ved at begrænse indkommende requests. Generelt bliver rate limiting anvendt til at beskytte NGINX server fra overvældene mange requests på samme tid.  
-
-Man kan gå ind konfigurere rate limit således:
-
-limit_req_zone $binary_remote_addr zone=mylimit:10mrate=10r/s;
-
-
-    server {    
-
-    location /login/ {
-        
-        limit_req zone=mylimit;
-        
-        proxy_pass http://my_upstream;
-    }
-    }
-
-Ved at ændre på de forskellige parameter kan man ændre antal requests man gerne vil indenfor et tidsinterval. 
-
-
-Solutions:
-Vi har valgt at bruge, Laravel forge da det er bygget til at spille godt sammen Laravel. Fordi Laravel forge er simpelt at bruge kan man bruge mere til udviklingen af ens applikation istedet devops arbejde. F.eks. havde vi brugt jenkins jamen så skulle bruges en del tid konfigurationer, og dermed mindre til appliaktionen.  
-
-
-Links :
-
-http://www.scaledagileframework.com/continuous-deployment/
-
-https://laracasts.com/discuss/channels/forge/what-does-forge-in-terms-of-security?page=1
-
-http://nginx.org/en/docs/http/ngx_http_upstream_module.html
-
-https://www.nginx.com/blog/rate-limiting-nginx/
-
-
+#### Fjern anonyme og ubrugte users
+```bash
+mysql> DROP USER "";
+```
