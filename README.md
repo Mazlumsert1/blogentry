@@ -11,6 +11,43 @@ Ofte kan man øge sikkerheden for en MySQL database med små konfigurationer, so
 
 ---
 
+#### Fjern unødvendige users
+Det er vigtig at man ikke har overflødige users, som ikke bliver brugt. Ofte kan det være test users uden specificeret hostname og password, derfor burde disse users straks slettes fra databasen.
+
+```bash
+mysql> select User,Host,Password FROM mysql.user;
+```
+```bash
++------------------+-----------+-------------------------------------------+
+| user             | host      | password                                  |
++------------------+-----------+-------------------------------------------+
+| root             | localhost | *DE06E242B88EFB1FE4B5083587C260BACB2A6158 |
+| demo-user        | %         |                                           |
+| root             | 127.0.0.1 | *DE06E242B88EFB1FE4B5083587C260BACB2A6158 |
+| test-user        | localhost |                                           |
++------------------+-----------+-------------------------------------------+
+```
+
+```bash
+mysql> delete from mysql.user where User="demo-user";
+mysql> delete from mysql.user where User="test-user";
+```
+
+```bash
++------------------+-----------+-------------------------------------------+
+| user             | host      | password                                  |
++------------------+-----------+-------------------------------------------+
+| root             | localhost | *DE06E242B88EFB1FE4B5083587C260BACB2A6158 |
+| root             | 127.0.0.1 | *DE06E242B88EFB1FE4B5083587C260BACB2A6158 |
++------------------+-----------+-------------------------------------------+
+```
+
+```bash
+mysql> flush privileges;
+```
+
+---
+
 #### Ændre default user
 Alene i 2016 var den mest brugte username “root” og password “123456”, så det er rimeligt at antage dette kan være en realitet. Ofte forsøger hackerne at få adgang til rettighederne til denne bruger, derfor er det vigtigt at denne bruger ændres. Det anbefales at adgangskoden ændres til en kompleks alfanumerisk adgangskode. Dette kan gøres hurtigt og nemt på to step.
 
@@ -24,9 +61,17 @@ mysql> SET PASSWORD FOR 'secure_user'@'hostname' = PASSWORD('01MoreSecurePass02'
 
 ---
 
-#### Fjern anonyme og ubrugte users
+#### Begrænse user tilladelser
+Det er vigtigt at man har applikation-specifikke users, altså users som kun har de nødvendige tilladelser til databasen. For at sikre at der ikke kan slettes data via en web-applikation, kan man oprette en user, som f.eks. kun har SELECT, INSERT, UPDATE rettigheder.
+
 ```bash
-mysql> DROP USER "";
+mysql> create user 'webapp'@'localhost' identified by '01SecurePassword02';
+```
+```bash
+mysql> grant select, insert, update on hackernewsdb.* to 'webapp'@'localhost';
+```
+```bash
+mysql> flush privileges;
 ```
 
 ## Kilder
@@ -36,3 +81,4 @@ mysql> DROP USER "";
 - https://www.percona.com/blog/2017/02/27/mysql-ransomware-open-source-database-security-part-3/
 - http://uk.businessinsider.com/most-popular-passwords-incredibly-insecure-easy-to-guess-123456-hacking-2017-1?r=US&IR=T
 - https://www.w3resource.com/mysql/mysql-security.php
+- https://www.digitalocean.com/community/tutorials/how-to-secure-mysql-and-mariadb-databases-in-a-linux-vps
