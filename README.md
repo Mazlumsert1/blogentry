@@ -27,4 +27,12 @@ mysql> SET PASSWORD FOR 'secure_user'@'hostname' = PASSWORD('01MoreSecurePass02'
 #### Fjern anonyme og ubrugte users
 ```bash
 mysql> DROP USER "";
+
+## Kilder
+http://www.hexatier.com/mysql-database-security-best-practices-2/
+- https://www.mysql.com/why-mysql/presentations/mysql-security-best-practices/
+- https://www.techrepublic.com/article/the-top-10-worst-ransomware-attacks-of-2017-so-far/
+- https://www.percona.com/blog/2017/02/27/mysql-ransomware-open-source-database-security-part-3/
+- http://uk.businessinsider.com/most-popular-passwords-incredibly-insecure-easy-to-guess-123456-hacking-2017-1?r=US&IR=T
+- https://www.w3resource.com/mysql/mysql-security.php
 ```
