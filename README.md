@@ -16,7 +16,8 @@ Det er vigtig at man ikke har overflødige users, som ikke bliver brugt. Ofte ka
 
 ```bash
 mysql> select User,Host,Password FROM mysql.user;
-
+```
+```
 +------------------+-----------+-------------------------------------------+
 | user             | host      | password                                  |
 +------------------+-----------+-------------------------------------------+
@@ -32,9 +33,11 @@ mysql> delete from mysql.user where User="demo-user";
 mysql> delete from mysql.user where User="test-user";
 ```
 
-```
+```bash
 mysql> select User,Host,Password FROM mysql.user;
+```
 
+```
 +------------------+-----------+-------------------------------------------+
 | user             | host      | password                                  |
 +------------------+-----------+-------------------------------------------+
