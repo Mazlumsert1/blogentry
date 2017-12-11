@@ -50,6 +50,10 @@ limit_req_zone $binary_remote_addr zone=mylimit:10mrate=10r/s;
 Ved at ændre på de forskellige parameter kan man ændre antal requests man gerne vil indenfor et tidsinterval. 
 
 
+Solutions:
+Vi har valgt at bruge, Laravel forge da det er bygget til at spille godt sammen Laravel. Fordi Laravel forge er simpelt at bruge kan man bruge mere til udviklingen af ens applikation istedet devops arbejde. F.eks. havde vi brugt jenkins jamen så skulle bruges en del tid konfigurationer, og dermed mindre til appliaktionen.  
+
+
 Links :
 
 http://www.scaledagileframework.com/continuous-deployment/
