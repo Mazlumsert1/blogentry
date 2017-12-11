@@ -1,6 +1,7 @@
+# Sikker MySQL
+
 ![enter image description here](http://technotif.com/wp-content/uploads/2014/02/Improve-MySQL-security.jpg)
 
-# Sikker MySQL
 Som en af de mest brugte open-source Relational Database Management System er MySQL en god færdighed at have, samt giver fordelagtig karriere muligheder. På grund af det konsekvente niveau af hurtig performance og nemt at bruge er den i dag brugt mange steder, både af webudvikler, individuelle og store organisationer, såsom Youtube, Google og Yahoo. Som de fleste produkter så er sikkerhed ikke en vigtig overvejelse. Ofte vil man gerne have det hurtig op at køre, således at organisationen kan hurtig drage fordel af det. Det er derfor vigtigt at man sikre MySQL databasen, da det kan have voldsomme konsekvenser, såsom tabt data eller ransomware, som var på omløb i 2017.
 
 ## Best Practices for increasing security
