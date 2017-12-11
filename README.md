@@ -15,9 +15,10 @@ Ofte kan man øge sikkerheden for en MySQL database med små konfigurationer, so
 Det er vigtig at man ikke har overflødige users, som ikke bliver brugt. Ofte kan det være test users uden specificeret hostname og password, derfor burde disse users straks slettes fra databasen.
 
 ```bash
+
 mysql> select User,Host,Password FROM mysql.user;
 ```
-```bash
+```
 +------------------+-----------+-------------------------------------------+
 | user             | host      | password                                  |
 +------------------+-----------+-------------------------------------------+
@@ -33,7 +34,7 @@ mysql> delete from mysql.user where User="demo-user";
 mysql> delete from mysql.user where User="test-user";
 ```
 
-```bash
+```
 +------------------+-----------+-------------------------------------------+
 | user             | host      | password                                  |
 +------------------+-----------+-------------------------------------------+
