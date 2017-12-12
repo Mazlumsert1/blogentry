@@ -77,6 +77,14 @@ mysql> grant select, insert, update on hackernewsdb.* to 'webapp'@'localhost';
 ```bash
 mysql> flush privileges;
 ```
+## Konklusion
+Der skal ikke være nogen tvivl om at man skal priotere sikkerheden højt, samt tages højder for en fejlfri opsætning. 
+Da database ofte er udsat for angreb, er det vigtigt at man sætter sig ind i de forskellige konfigurationer for hvordan man beskytter databasen så godt som muligt. 
+Så det en god ide, at vægte sikkerheden højt når man skal vælge hvilken database der skal bruges. Det kan ikke blive sagt nok, at enhver udvikler skal have det fundamentale på plads når der snakkes om sikkerhed, f.eks. kunne det være passwords eller andre følsomme data skal hashes. Vi har set gang på gang at dårlig sikkerhed kan have livsfarende konsekvenser, og koste virksomheder millioner. 
+
+Det man burde tag med her fra er hvis der arbejdes med MySQL, så er der vise standarder der burde blive overholdt nogen af dem kunne være konfigurationer som vi har gennemgået i denne blog. 
+Vi har dog denne blog kun rørt på overfladen, hvor meget sikkerhed der burde være. 
+Men håber at det kan være motivation, for forskellige individer og organisationer. 
 
 ## Kilder
 - http://www.hexatier.com/mysql-database-security-best-practices-2/
