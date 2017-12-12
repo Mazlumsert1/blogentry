@@ -4,7 +4,7 @@
 
 Som en af de mest brugte open-source Relational Database Management System er MySQL en god færdighed at have, samt giver fordelagtig karriere muligheder. På grund af det konsekvente niveau af hurtig performance og nemt at bruge er den i dag brugt mange steder, både af webudvikler, individuelle og store organisationer, såsom Youtube, Google og Yahoo. Som de fleste produkter så er sikkerhed ikke en vigtig overvejelse. Ofte vil man gerne have det hurtig op at køre, således at organisationen kan hurtig drage fordel af det. Det er derfor vigtigt at man sikre MySQL databasen, da det kan have voldsomme konsekvenser, såsom tabt data eller ransomware, som var på omløb i 2017.
 
-## Best Practices for increasing security
+## Måder at forbedre MySQL Security
 I denne blog vil vi se på nogle af de mest populære sikkerhedsfaktorer i MySQL, og hermed løsninger til en mere sikker MySQL, dog er det yderst vigtigt, samt antaget at man har sikret serveren, inden man sikre MySQL databasen.
 
 Ofte kan man øge sikkerheden for en MySQL database med små konfigurationer, som kan gøre en stor forskel. 
@@ -77,6 +77,78 @@ mysql> grant select, insert, update on hackernewsdb.* to 'webapp'@'localhost';
 ```bash
 mysql> flush privileges;
 ```
+
+---
+
+#### Skift standard port mappings
+MySQL kører som standard på port 3306. Dette bør ændres efter installationen for at forvirre, hvilke tjenester der kører på hvilke porte, da angriberne i første omgang vil forsøge at udnytte standardværdier. Nedenfor viser vi et eksempel på hvordan vi ændre porten fra 3306 til 3360.
+
+```bash
+# Open file my.cnf
+nano /etc/mysql/my.cnf
+```
+```bash
+# Find the following section, and change the port number
+[mysqld]
+#
+# * Basic Settings
+#
+#user		= mysql
+pid-file	= /var/run/mysqld/mysqld.pid
+socket		= /var/run/mysqld/mysqld.sock
+port		= 3306
+......
+```
+
+---
+
+#### Slå "LOAD DATA LOCAL INFILE" kommando fra
+Kommandoen "LOAD DATA LOCAL INFILE" gør det muligt for brugere at læse lokale filer og endda få adgang til andre filer på operativsystemet. Dette kan være meget beskadig, hvis det bliver udnyttet af ondsindede bruger ved hjælp af metoder som SQL injection. Det anbefales derfor, at deaktivere kommandoen. Nedenfor viser vi et eksempel på hvordan vi deaktivere kommandoen.
+
+```bash
+# Open file my.cnf
+nano /etc/mysql/my.cnf
+```
+```bash
+# Find the following section
+[mysqld]
+#
+# * Basic Settings
+#
+......
+```
+```bash
+# Insert this in end of the section
+local-infile=0
+```
+
+---
+
+#### Deaktiver fjernadgang til databasen
+Skal databasen kun bruges af lokale applikationer, anbefales det at fjernadgang til databasen deaktiveres. Denne konfiguration sikre, at MySQL ikke acceptere forbindelser fra hvor som helst, men kun localhost. Altså ved at bruge denne konfiguration forhindres MySQL i at lytte til TCP/IP forbindelser, så det kun er lokale users der vil have tilladelse til at oprette forbindelse til MySQL databasen. Nedenfor viser vi et eksempel på hvordan vi deaktivere fjernadgang.
+
+```bash
+# Find the following section
+[mysqld]
+#
+# * Basic Settings
+#
+......
+```
+```bash
+# Insert this in end of the section
+skip-networking
+```
+
+---
+
+#### Læse/skrive rettighederne til my.cnf filen
+Det er vigtigt at beskytte my.cnf filen, så andre end admin ikke kan ændre den. Derfor anbefales det at gøre filen skrivebeskyttet. Nedenfor viser vi et eksempel på hvordan vi skrivebeskytter my.cnf filen.
+
+```bash
+sudo chmod 0644 /etc/mysql/my.cnf
+```
+
 ## Konklusion
 Der skal ikke være nogen tvivl om, at man skal priotere sikkerheden højt, samt tage højder for en fejlfri opsætning. 
 Da database ofte er udsat for angreb, er det vigtigt at man sætter sig ind i de forskellige konfigurationer, for hvordan man beskytter databasen så godt som muligt. 
@@ -92,3 +164,4 @@ Er MySQL en del af udviklingen, så er der vise standarder der burde blive overh
 - http://uk.businessinsider.com/most-popular-passwords-incredibly-insecure-easy-to-guess-123456-hacking-2017-1?r=US&IR=T
 - https://www.w3resource.com/mysql/mysql-security.php
 - https://www.digitalocean.com/community/tutorials/how-to-secure-mysql-and-mariadb-databases-in-a-linux-vps
+- https://www.upguard.com/articles/top-11-ways-to-improve-mysql-security
