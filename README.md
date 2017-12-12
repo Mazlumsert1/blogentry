@@ -5,12 +5,10 @@ _af Ismail Cam og Mazlum D. Sert_
 
 Som en af de mest brugte open-source Relational Database Management System er MySQL en god færdighed at have, samt giver fordelagtig karriere muligheder. På grund af det konsekvente niveau af hurtig performance og nemt at bruge er den i dag brugt mange steder, både af webudvikler, individuelle og store organisationer, såsom Youtube, Google og Yahoo. Som de fleste produkter så er sikkerhed ikke en vigtig overvejelse. Ofte vil man gerne have det hurtig op at køre, således at organisationen kan hurtig drage fordel af det. Det er derfor vigtigt at man sikre MySQL databasen, da det kan have voldsomme konsekvenser, såsom tabt data eller ransomware, som var på omløb i 2017.
 
-## Måder at forbedre MySQL Security
+## 7 gode råd til at forbedre MySQL sikkerheden
 I denne blog vil vi se på nogle af de mest populære sikkerhedsfaktorer i MySQL, og hermed løsninger til en mere sikker MySQL, dog er det yderst vigtigt, samt antaget at man har sikret serveren, inden man sikre MySQL databasen.
 
-Ofte kan man øge sikkerheden for en MySQL database med små konfigurationer, som kan gøre en stor forskel. 
-
----
+Ofte kan man øge sikkerheden for en MySQL database med små konfigurationer, som kan gøre en stor forskel. Vi vil nedenfor komme eksempler på hvordan man kan øge sikkerheden i en MySQL database.
 
 #### Fjern unødvendige users
 Det er vigtig at man ikke har overflødige users, som ikke bliver brugt. Ofte kan det være test users uden specificeret hostname og password, derfor burde disse users straks slettes fra databasen.
