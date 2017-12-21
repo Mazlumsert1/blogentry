@@ -20,6 +20,7 @@ Ofte kan man øge sikkerheden for en MySQL database med små konfigurationer, so
 Det er vigtig at man ikke har overflødige users, som ikke bliver brugt. Ofte kan det være test users uden specificeret hostname og password, derfor burde disse users straks slettes fra databasen.
 
 <img src="images/removeuser.png" width="100%">
+
 _Vi har fået inspiration fra følgende blog (http://www.hexatier.com/mysql-database-security-best-practices-2/), og har andvendt denne fremgangsmåde på vores egen database._ 
 
 ---
@@ -41,6 +42,7 @@ mysql> SET PASSWORD FOR 'secure_user'@'hostname' = PASSWORD('01MoreSecurePass02'
 Det er vigtigt at man har applikation-specifikke users, altså users som kun har de nødvendige tilladelser til databasen. For at sikre at der ikke kan slettes data via en web-applikation, kan man oprette en user, som f.eks. kun har SELECT, INSERT, UPDATE rettigheder.
 
 <img src="images/grantuser.png" width="100%">
+
 _Vi har fået inspiration fra følgende blog (http://www.techotopia.com/index.php/MySQL_Users_and_Security), og har andvendt denne fremgangsmåde på vores egen database._ 
 ---
 
