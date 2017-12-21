@@ -5,6 +5,10 @@ _af Ismail Cam og Mazlum D. Sert_
 
 Som en af de mest brugte open-source Relational Database Management System er MySQL en god færdighed at have, samt giver fordelagtig karriere muligheder. På grund af det konsekvente niveau af hurtig performance og nemt at bruge er den i dag brugt mange steder, både af webudvikler, individuelle og store organisationer, såsom Youtube, Google og Yahoo. Som de fleste produkter så er sikkerhed ikke en vigtig overvejelse. Ofte vil man gerne have det hurtig op at køre, således at organisationen kan hurtig drage fordel af det. Det er derfor vigtigt at man sikre MySQL databasen, da det kan have voldsomme konsekvenser, såsom tabt data eller ransomware, som var på omløb i 2017.
 
+### Problemet
+Grunden til at vi har valgt og skrive om sikkerhed i MySQL er fordi, at MySQL har været en stor del af vores Hacker News projekt i large Systems Developments fag.
+Ansvaret angående MySQL databasen lå i, at opbevare større mængde af pågældende data, hvilket stammer fra en udkommende simulator. Det der har lagt stort opsigt har været, at beskytte MySQL databasen for ondsindede tredjepart, så modtagelsen af dataene fra simulatoren kan ske kontinuert.
+
 ## 7 gode råd til at forbedre MySQL sikkerheden
 I denne blog vil vi se på nogle af de mest populære sikkerhedsfaktorer i MySQL, og hermed løsninger til en mere sikker MySQL, dog er det yderst vigtigt, samt antaget at man har sikret serveren, inden man sikre MySQL databasen.
 
