@@ -44,6 +44,7 @@ Det er vigtigt at man har applikation-specifikke users, altså users som kun har
 <img src="images/grantuser.png" width="100%">
 
 Vi har fået inspiration fra følgende blog (http://www.techotopia.com/index.php/MySQL_Users_and_Security), og har andvendt denne fremgangsmåde på vores egen database.
+
 ---
 
 #### Skift standard port mappings
