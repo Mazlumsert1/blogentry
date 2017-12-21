@@ -21,7 +21,7 @@ Det er vigtig at man ikke har overflødige users, som ikke bliver brugt. Ofte ka
 
 <img src="images/removeuser.png" width="100%">
 
-_Vi har fået inspiration fra følgende blog (http://www.hexatier.com/mysql-database-security-best-practices-2/), og har andvendt denne fremgangsmåde på vores egen database._ 
+Vi har fået inspiration fra følgende blog (http://www.hexatier.com/mysql-database-security-best-practices-2/), og har andvendt denne fremgangsmåde på vores egen database.
 
 ---
 
@@ -43,7 +43,7 @@ Det er vigtigt at man har applikation-specifikke users, altså users som kun har
 
 <img src="images/grantuser.png" width="100%">
 
-_Vi har fået inspiration fra følgende blog (http://www.techotopia.com/index.php/MySQL_Users_and_Security), og har andvendt denne fremgangsmåde på vores egen database._ 
+Vi har fået inspiration fra følgende blog (http://www.techotopia.com/index.php/MySQL_Users_and_Security), og har andvendt denne fremgangsmåde på vores egen database.
 ---
 
 #### Skift standard port mappings
