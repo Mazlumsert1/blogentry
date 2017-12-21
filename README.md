@@ -9,6 +9,8 @@ Som en af de mest brugte open-source Relational Database Management System er My
 Grunden til at vi har valgt og skrive om sikkerhed i MySQL er fordi, at MySQL har været en stor del af vores Hacker News projekt i large Systems Developments fag.
 Ansvaret angående MySQL databasen lå i, at opbevare større mængde af pågældende data, hvilket stammer fra en udkommende simulator. Det der har lagt stort opsigt har været, at beskytte MySQL databasen for ondsindede tredjepart, så modtagelsen af dataene fra simulatoren kan ske kontinuert.
 
+For at hindre at dette problem ikke opstår, har vi udfra forskellige blogs udpejede de mest simple og interessante MySQL sikkherheds konfigurationer.
+
 ## 7 gode råd til at forbedre MySQL sikkerheden
 I denne blog vil vi se på nogle af de mest populære sikkerhedsfaktorer i MySQL, og hermed løsninger til en mere sikker MySQL, dog er det yderst vigtigt, samt antaget at man har sikret serveren, inden man sikre MySQL databasen.
 
