@@ -3,7 +3,7 @@
 # Sikker MySQL
 _af Ismail Cam og Mazlum D. Sert_
 
-Som en af de mest brugte open-source Relational Database Management System er MySQL en god færdighed at have, samt giver fordelagtig karriere muligheder. På grund af det konsekvente niveau af hurtig performance og nemt at bruge er den i dag brugt mange steder, både af webudvikler, individuelle og store organisationer, såsom Youtube, Google og Yahoo. Som de fleste produkter så er sikkerhed ikke en vigtig overvejelse. Ofte vil man gerne have det hurtig op at køre, således at organisationen kan hurtig drage fordel af det. Det er derfor vigtigt at man sikre MySQL databasen, da det kan have voldsomme konsekvenser, såsom tabt data eller ransomware, som var på omløb i 2017.
+Som en af de mest brugte open-source Relational Database Management System er MySQL en god færdighed at have, samt giver fordelagtig karriere muligheder. På grund af det konsekvente niveau af hurtig performance og nemt at bruge er den i dag brugt mange steder, både af webudvikler, individuelle og store organisationer, såsom Youtube, Google og Yahoo. Som de fleste produkter så er sikkerhed ikke en vigtig overvejelse, da man som virksomhed ofte gerne vil have det hurtig op at køre, således at virksomheden kan hurtig drage fordel af det. Det er derfor vigtigt at man sikre MySQL databasen, da det kan have voldsomme konsekvenser, såsom tabt data eller ransomware, som var på omløb i 2017.
 
 ### Problemet
 Grunden til at vi har valgt og skrive om sikkerhed i MySQL er fordi, at MySQL har været en stor del af vores Hacker News projekt i large Systems Developments fag.
@@ -119,6 +119,10 @@ Da database ofte er udsat for angreb, er det vigtigt at man sætter sig ind i de
 Det er en god ide at vægte sikkerheden højt, når man skal vælge hvilken database der skal bruges. Det kan ikke blive sagt nok, at enhver udvikler skal have det fundamentale på plads, når der snakkes om sikkerhed. Det kunne f.eks. være hashing af passwords eller andre følsomme data. Vi har gang på gang set, at dårlig sikkerhed kan have livsfarende konsekvenser, og koste virksomheder millioner. 
 
 Er MySQL en del af udviklingen, så er der vise standarder der burde blive overholdt. Nogle af dem kunne være konfigurationer, som vi har gennemgået i denne blog. Vi har dog i denne blog kun rørt på overfladen, hvor meget sikkerhed der burde være, og håber at det kan være motivation, for forskellige individer og organisationer. 
+
+I Hacker News projekt blev disse sikkerheds konfigurationer ikke anvendt til at starte med. Vi blev dog ikke udstat for nogen former for database angreb, det betyder dog ikke at det ikke kunne ske, derfor for at gøre vores MySQL database mere sikker, har vi konfigureret disse sikkerheds konfigurationer.
+
+Man kan undre sig over hvorfor MySQL teamet ikke har disse konfiguration out-of-the-box. En af grundende til, at disse sikkerheds konfigurationer ikke er dækket af MySQL teamet, er netop for at vi som udvikler kan drage nytte af dem, uden at være begrænset.  
 
 ## Kilder
 - http://www.techotopia.com/index.php/MySQL_Users_and_Security
