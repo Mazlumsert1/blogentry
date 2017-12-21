@@ -17,43 +17,9 @@ I denne blog vil vi se på nogle af de mest populære sikkerhedsfaktorer i MySQL
 Ofte kan man øge sikkerheden for en MySQL database med små konfigurationer, som kan gøre en stor forskel. Vi vil nedenfor komme eksempler på hvordan man kan øge sikkerheden i en MySQL database.
 
 #### Fjern unødvendige users
-Det er vigtig at man ikke har overflødige users, som ikke bliver brugt. Ofte kan det være test users uden specificeret hostname og password, derfor burde disse users straks slettes fra databasen.
+Det er vigtig at man ikke har overflødige users, som ikke bliver brugt. Ofte kan det være test users uden specificeret hostname og password, derfor burde disse users straks slettes fra databasen. _Vi har fået inspiration fra følgende blog (http://www.hexatier.com/mysql-database-security-best-practices-2/), og har andvendt denne fremgangsmåde på vores egen database._ 
 
-```bash
-mysql> select User,Host,Password FROM mysql.user;
-```
-```
-+------------------+-----------+-------------------------------------------+
-| user             | host      | password                                  |
-+------------------+-----------+-------------------------------------------+
-| root             | localhost | *DE06E242B88EFB1FE4B5083587C260BACB2A6158 |
-| demo-user        | %         |                                           |
-| root             | 127.0.0.1 | *DE06E242B88EFB1FE4B5083587C260BACB2A6158 |
-| test-user        | localhost |                                           |
-+------------------+-----------+-------------------------------------------+
-```
-
-```bash
-mysql> delete from mysql.user where User="demo-user";
-mysql> delete from mysql.user where User="test-user";
-```
-
-```bash
-mysql> select User,Host,Password FROM mysql.user;
-```
-
-```
-+------------------+-----------+-------------------------------------------+
-| user             | host      | password                                  |
-+------------------+-----------+-------------------------------------------+
-| root             | localhost | *DE06E242B88EFB1FE4B5083587C260BACB2A6158 |
-| root             | 127.0.0.1 | *DE06E242B88EFB1FE4B5083587C260BACB2A6158 |
-+------------------+-----------+-------------------------------------------+
-```
-
-```bash
-mysql> flush privileges;
-```
+<img src="images/removeuser.png" width="100%">
 
 ---
 
