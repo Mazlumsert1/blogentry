@@ -17,9 +17,10 @@ I denne blog vil vi se på nogle af de mest populære sikkerhedsfaktorer i MySQL
 Ofte kan man øge sikkerheden for en MySQL database med små konfigurationer, som kan gøre en stor forskel. Vi vil nedenfor komme eksempler på hvordan man kan øge sikkerheden i en MySQL database.
 
 #### Fjern unødvendige users
-Det er vigtig at man ikke har overflødige users, som ikke bliver brugt. Ofte kan det være test users uden specificeret hostname og password, derfor burde disse users straks slettes fra databasen. _Vi har fået inspiration fra følgende blog (http://www.hexatier.com/mysql-database-security-best-practices-2/), og har andvendt denne fremgangsmåde på vores egen database._ 
+Det er vigtig at man ikke har overflødige users, som ikke bliver brugt. Ofte kan det være test users uden specificeret hostname og password, derfor burde disse users straks slettes fra databasen.
 
 <img src="images/removeuser.png" width="100%">
+_Vi har fået inspiration fra følgende blog (http://www.hexatier.com/mysql-database-security-best-practices-2/), og har andvendt denne fremgangsmåde på vores egen database._ 
 
 ---
 
@@ -39,16 +40,8 @@ mysql> SET PASSWORD FOR 'secure_user'@'hostname' = PASSWORD('01MoreSecurePass02'
 #### Begrænse user tilladelser
 Det er vigtigt at man har applikation-specifikke users, altså users som kun har de nødvendige tilladelser til databasen. For at sikre at der ikke kan slettes data via en web-applikation, kan man oprette en user, som f.eks. kun har SELECT, INSERT, UPDATE rettigheder.
 
-```bash
-mysql> create user 'webapp'@'localhost' identified by '01SecurePassword02';
-```
-```bash
-mysql> grant select, insert, update on hackernewsdb.* to 'webapp'@'localhost';
-```
-```bash
-mysql> flush privileges;
-```
-
+<img src="images/grantuser.png" width="100%">
+_Vi har fået inspiration fra følgende blog (http://www.techotopia.com/index.php/MySQL_Users_and_Security), og har andvendt denne fremgangsmåde på vores egen database._ 
 ---
 
 #### Skift standard port mappings
@@ -128,6 +121,7 @@ Det er en god ide at vægte sikkerheden højt, når man skal vælge hvilken data
 Er MySQL en del af udviklingen, så er der vise standarder der burde blive overholdt. Nogle af dem kunne være konfigurationer, som vi har gennemgået i denne blog. Vi har dog i denne blog kun rørt på overfladen, hvor meget sikkerhed der burde være, og håber at det kan være motivation, for forskellige individer og organisationer. 
 
 ## Kilder
+- http://www.techotopia.com/index.php/MySQL_Users_and_Security
 - http://www.hexatier.com/mysql-database-security-best-practices-2/
 - https://www.mysql.com/why-mysql/presentations/mysql-security-best-practices/
 - https://www.techrepublic.com/article/the-top-10-worst-ransomware-attacks-of-2017-so-far/
